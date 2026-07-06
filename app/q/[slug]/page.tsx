@@ -98,6 +98,8 @@ export default function QuizPage() {
 
     const timer = setInterval(() => setTimeLeft((prev) => prev - 1), 1000);
     return () => clearInterval(timer);
+    // saveAnswer intentionally stays outside dependencies to avoid recreating the per-question interval on each render.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [started, finished, selected, timeLeft]);
 
   function startQuiz() {
